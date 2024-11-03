@@ -50,3 +50,17 @@ This folder contains the MATLAB code.
 Summary: The **2mAmateurRadioCapture** folder is for the optional task in the Software Defined Radio and GNU Radio assignment.
 
 Contains a GNU Radio template to assist students in decoding an Amateur Radio Broadcast.
+
+Misc:
+For using Arduino with the RAK Breakout Board Refer to this:
+Add RAK3272S as a supported board in Arduino IDE  by updating Board Manager URLs in Preferences settings of Arduino 
+IDE with this JSON URL https://raw.githubusercontent.com/RAKWireless/RAKwireless-Arduino-BSP-Index/main/package_rakwireless.com_rui_index.json. 
+After that, you can then add RAKwireless RUI STM32 Boards via Arduino board manager.
+
+https://docs.rakwireless.com/product-categories/wisduo/rak3272s-breakout-board/quickstart
+--------------------------------------------------------------------------------------------------------------------
+For using the ESP3266 and Wi-Fi, Please refer to this:
+https://docs.google.com/presentation/d/1ShHY82ogA8ZN0k14MjzIV-buHIkdWnY3/edit#slide=id.g15820f77c2e_0_0
+--------------------------------------------------------------------------------------------------------------------
+For a Database Tutorial please refer to:
+https://github.com/faridfarahmand/SSU/tree/main/IoTCourse/dataBase
