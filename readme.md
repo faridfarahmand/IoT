@@ -7,11 +7,11 @@ Summary: Contains the PHP and HTML code to create your own webpage to display da
 
 This folder contains:
 
-DataBaseUrlDataPushingPage.php - Uses the URL to push data to the database.
+**DataBaseUrlDataPushingPage.php** - Uses the URL to push data to the database.
 
-MainWebpageCode.php - Main webpage that displays database information in a table and a plot.
+**MainWebpageCode.php** - Main webpage that displays database information in a table and a plot.
 
-data.php - Displays contents of the database in .json format.
+**data.php**- Displays contents of the database in .json format.
 
 ### Database
 Summary: Contains MySQL commands for sensor_register and sensor_data tables in a MySQL database.
@@ -28,12 +28,12 @@ Summary: Contains both the Client and Server code used in the P2P LoRa system. N
 
 This folder contains two subfolders:
 
-Client
+**Client**
 
-Server
+**Server**
 
 ### GNURadio
-Summary: Contains the GNU Radio file, LoRaSpectrum.grc, which can be downloaded and used to view the spectrum of a LoRa transmission. The readme.txt also contains a link to access and download the recorded IQ data of the LoRa transmission. The GNU Radio solution and the IQ data are used to look at the spectrum.
+Summary: Contains the GNU Radio file, **LoRaSpectrum.grc**, which can be downloaded and used to view the spectrum of a LoRa transmission. The readme.txt also contains a link to access and download the recorded IQ data of the LoRa transmission. The GNU Radio solution and the IQ data are used to look at the spectrum.
 
 This folder contains:
 
@@ -47,6 +47,6 @@ Summary: This folder contains MATLAB code that will be used to plot the LoRa pac
 This folder contains the MATLAB code.
 
 ### 2mAmateurRadioCapture
-Summary: The 2mAmateurRadioCapture folder is for the optional task in the Software Defined Radio and GNU Radio assignment.
+Summary: The **2mAmateurRadioCapture** folder is for the optional task in the Software Defined Radio and GNU Radio assignment.
 
 Contains a GNU Radio template to assist students in decoding an Amateur Radio Broadcast.
