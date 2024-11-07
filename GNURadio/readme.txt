@@ -3,3 +3,5 @@ or
 Download: LoRaBroadcastRecording.zip ---- Please unzip
 
 Remember that the provided recording must be inserted into your GNU Radio solution. 
+
+LoRaSpectrum.grc --> This is the GNU radio project.
