@@ -142,23 +142,18 @@ void setup()
     api.lorawan.registerSendCallback(sendCallback);
 }
 
-void uplink_routine(double tempReading, double humidityReading)
+void uplink_routine(double tempReading)
 {
     String temp = "temp=";
-    String humidity = "&humidity=";
 
     String tempData = String(tempReading);
-    String humidityData = String(humidityReading);
 
     uint8_t lengthOfTempReading = tempData.length();
     uint8_t lengthOfTempVarName = temp.length();
-
-    uint8_t lengthOfHumidityReading = humidityData.length();
-    uint8_t lengthOfHumidityVarName = humidity.length();
     
     // This is the payload of the uplink.
-    String datum = temp + tempData + humidity + humidityData;
-    uint8_t data_len = lengthOfTempReading + lengthOfTempVarName + lengthOfHumidityReading + lengthOfHumidityVarName;
+    String datum = temp + tempData;
+    uint8_t data_len = lengthOfTempReading + lengthOfTempVarName;
 
     // The packet.
     for (int i = 0; i < data_len; i++){
@@ -180,8 +175,8 @@ void uplink_routine(double tempReading, double humidityReading)
     }
 }
 
-double ReadSensor(){
-  double reading = random(0, 100);
+int ReadSensor(){
+  int reading = random(0, 100);
   return reading;
 }
 
@@ -190,11 +185,10 @@ void loop()
     static uint64_t last = 0;
     static uint64_t elapsed;
 
-    double reading1 = ReadSensor();
-    double reading2 = ReadSensor();
+    int reading1 = ReadSensor();
 
     if ((elapsed = millis() - last) > OTAA_PERIOD) {
-        uplink_routine(reading1, reading2);
+        uplink_routine(reading1);
   
         last = millis();
     }
