@@ -19,7 +19,7 @@ Summary: Contains MySQL commands for sensor_register and sensor_data tables in a
 This folder contains the MySQL commands that can be edited and used to create the database which will store data collected by a LoRa edge node.
 
 ### LoRaWan_OTAA
-Summary: Contains Arduino code that should be used with a RAK 3172S Breakout Board to send LoRa messages to a LoRa gateway. Note that the code will have to be modified according to the EUI number on the RAK and the configuration of the gateway - the lab will cover this.
+Summary: Contains Arduino code that should be used with a RAK 3272S Breakout Board to send LoRa messages to a LoRa gateway. Note that the code will have to be modified according to the EUI number on the RAK and the configuration of the gateway - the lab will cover this.
 
 This folder contains the LoRaWan_OTAA.ino file which should be opened after setting up the Arduino IDE.
 
