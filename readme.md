@@ -24,13 +24,15 @@ Summary: Contains Arduino code that should be used with a RAK 3272S Breakout Boa
 This folder contains the LoRaWan_OTAA.ino file which should be opened after setting up the Arduino IDE.
 
 ### Lora_P2P
-Summary: Contains both the Client and Server code used in the P2P LoRa system. Note that the server code includes all the necessary code for the server side - including the RAK module and ESP8266.
+Summary: Contains both the Client and Server code used in the P2P LoRa system. It also contains a repeater folder, which contains the Arduino code which implements a repeater with the RAK3272S breakout board. Note that the server code includes all the necessary code for the server side - including the RAK module and ESP8266.
 
-This folder contains two subfolders:
+This folder contains three subfolders:
 
 **Client**
 
 **Server**
+
+**Repeater**
 
 ### GNURadio
 Summary: Contains the GNU Radio file, **LoRaSpectrum.grc**, which can be downloaded and used to view the spectrum of a LoRa transmission. The readme.txt also contains a link to access and download the recorded IQ data of the LoRa transmission. The GNU Radio solution and the IQ data are used to look at the spectrum.
