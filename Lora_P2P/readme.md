@@ -19,6 +19,7 @@ The `server` folder contains the code and resources for the server-side applicat
 
 #### Contents:
 - **`LoRa_P2P_Server.ino`**: The main entry point for the RAK module server application.
+- **`ESP8266_Gateway`**: The server side folder which contains the code for the ESP8266.
 
 ### 3. Repeater
 
