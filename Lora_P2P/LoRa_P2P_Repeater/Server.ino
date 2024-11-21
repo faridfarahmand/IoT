@@ -172,46 +172,46 @@ void loop()
     String nodeValue = getQueryValue(query, "node");
 
     RegisteredNodes nodeEnum = stringToNodeEnum(nodeValue);
-    String rxnode = String(nodeEnum);
 
-    if (rxnode != "node-2") {
-      Serial.println("Node found: " + rxnode + " is not from the repeater at node-2... Dropping received data!");
+    if (nodeValue != "node-2") {
+      Serial.println("Node found: " + nodeValue + " is not from the repeater at node-2... Dropping received data!");
       registeredNode = false;
+      api.lora.precv(5000);
     }
-    
-    digitalWrite(PA7, HIGH);
-    delay(5000);
-    digitalWrite(PA7, LOW);
-    delay(1000);
+    else
+    {
+      digitalWrite(PA7, HIGH);
+      delay(5000);
+      digitalWrite(PA7, LOW);
+      delay(1000);
 
-    int attempts = 0;
+      int attempts = 0;
 
-    const int max_attempts = 1;
+      const int max_attempts = 1;
 
-    String ack = "ack";
+      String ack = "ack";
 
-    uint8_t payload[ack.length() + 1];
+      uint8_t payload[ack.length() + 1];
 
-    ack.getBytes(payload, ack.length() + 1);
+      ack.getBytes(payload, ack.length() + 1);
 
-    bool send_result = false;
+      bool send_result = false;
 
-    while (!send_result && attempts < max_attempts) {
-      send_result = api.lora.psend(ack.length() + 1, payload);
+      while (!send_result && attempts < max_attempts) {
+        send_result = api.lora.psend(ack.length() + 1, payload);
 
-      Serial.printf("Server to Client Acknowledge %s\r\n", send_result ? "Success" : "Fail");
+        Serial.printf("Server to Client Acknowledge %s\r\n", send_result ? "Success" : "Fail");
 
-      attempts++;
+        attempts++;
 
-      if (!send_result)
-      {
-        delay(1000);
-      }
+        if (!send_result)
+        {
+          delay(1000);
+        }
 
     }
-    if (registeredNode){
       Serial1.println(LoRaMessage);
-    }
-  }  
+    }  
+  }
 }
 
