@@ -28,7 +28,6 @@ enum RegisteredNodes{
   node_unknown
 };
 
-
 // Function to parse node name query string.
 String getQueryValue(String query, String key) {
   int startIndex = query.indexOf(key + "=");
@@ -197,7 +196,12 @@ void loop()
       Serial.println("Node found: " + nodeValue + " is not registered... Dropping received data!");
       registeredNode = false;
     }
-    
+
+    String txMessage = rxMessageString;
+    txMessage.replace("node=node-1", "node=node-2");
+
+    Serial.println("The new message is: " + txMessage);
+
     // Visual indication that a message was received.
     digitalWrite(PA7, HIGH);
     delay(5000);
@@ -206,14 +210,14 @@ void loop()
 
     int attempts = 0;
 
-    uint8_t payload[rxMessageString.length() + 1];
+    uint8_t payload[txMessage.length() + 1];
 
-    rxMessageString.getBytes(payload, rxMessageString.length() + 1);
+    txMessage.getBytes(payload, txMessage.length() + 1);
 
     bool send_result = false;
 
     while (!send_result && attempts < max_attempts) {
-      send_result = api.lora.psend(rxMessageString.length() + 1, payload);
+      send_result = api.lora.psend(txMessage.length() + 1, payload);
 
       Serial.printf("Repeating Message ", send_result ? "Success" : "Fail");
 
@@ -226,4 +230,3 @@ void loop()
     }
   }  
 }
-
