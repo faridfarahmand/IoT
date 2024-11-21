@@ -5,13 +5,13 @@ bool received = false;
 
 // These are the LoRa parameters. myFreq is the LoRa center frequency in Hz.
 double myFreq = 905500000;
-uint16_t sf = 12, bw = 0, cr = 0, preamble = 8, txPower = 5;
+uint16_t sf = 12, bw = 0, cr = 0, preamble = 8, txPower = 22;
 
 // Initalizing variable for the received LoRa message.
 String LoRaMessage = "";
 
 // The max number of resends of the received packet.
-const int max_attempts = 2;
+const int max_attempts = 1;
 
 // List of registered nodes. The client may be any one of the fields in the enum.
 enum RegisteredNodes{
@@ -198,28 +198,28 @@ void loop()
     }
 
     String txMessage = rxMessageString;
-    txMessage.replace("node=node-1", "node=node-2");
-
-    Serial.println("The new message is: " + txMessage);
-
-    // Visual indication that a message was received.
-    digitalWrite(PA7, HIGH);
-    delay(5000);
-    digitalWrite(PA7, LOW);
-    delay(1000);
+    txMessage.replace("node-1", "node-2");
+    
+    String newSend = txMessage;
+    Serial.println("The new message is: " + newSend + "...");
+    delay(10000);
 
     int attempts = 0;
 
-    uint8_t payload[txMessage.length() + 1];
+    uint8_t payload[newSend.length() + 1];
 
-    txMessage.getBytes(payload, txMessage.length() + 1);
+    newSend.getBytes(payload, newSend.length() + 1);
 
     bool send_result = false;
 
     while (!send_result && attempts < max_attempts) {
-      send_result = api.lora.psend(txMessage.length() + 1, payload);
+      if (rx_done) {
 
-      Serial.printf("Repeating Message ", send_result ? "Success" : "Fail");
+        rx_done = false;
+        send_result = api.lora.psend(newSend.length() + 1, payload);
+        Serial.printf("Repeater send %s\r\n", send_result ? "Success" : "Fail");
+        delay(1000);
+      }
 
       attempts++;
 
